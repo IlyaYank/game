@@ -7,7 +7,7 @@ let overlay = document.getElementById('overlay');
 let btn_close = document.getElementById('btn-close');
 
 area.addEventListener('click', e => {
-	if(e.target.className == 'box'){
+	if(e.target.className == 'box' && (e.target.innerHTML != "X" && e.target.innerHTML != "O")){
 		move % 2 === 0 ? e.target.innerHTML = "X" : e.target.innerHTML = "O";
 		move++;
 		check();
@@ -15,6 +15,7 @@ area.addEventListener('click', e => {
 });
 
 const check = () => {
+	let draww = 0;
 	const boxes = document.getElementsByClassName('box');
 	const arr = [
 		[0,1,2]
@@ -26,6 +27,8 @@ const check = () => {
 		,[0,4,8]
 		,[2,4,6]
 	]
+	
+		
 	for(i = 0; i < arr.length; i++){
 		if(
 			boxes[arr[i][0]].innerHTML == "X" && boxes[arr[i][1]].innerHTML == "X" && boxes[arr[i][2]].innerHTML == "X"
@@ -40,9 +43,24 @@ const check = () => {
 			Winner(result);
 		}
 	}
+
+	for(i = 0; i < 9; i++){
+		if(boxes[i].innerHTML == "X" || boxes[i].innerHTML == "O"){
+			draww++;
+			if(draww == 9){
+				draw();
+
+			}
+		}
+	}
+	
 }
 
 
+function draw(){
+	contentWrapper.innerHTML = "Ничья......"
+	modal_result.style.display = 'block';
+}
 
 function Winner(winner){
 	
