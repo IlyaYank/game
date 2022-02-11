@@ -28,6 +28,15 @@ const check = () => {
 		,[2,4,6]
 	]
 	
+	for(i = 0; i < 9; i++){
+		if(boxes[i].innerHTML == "X" || boxes[i].innerHTML == "O"){
+			draww++;
+			if(draww == 9){
+				draw();
+
+			}
+		}
+	}
 		
 	for(i = 0; i < arr.length; i++){
 		if(
@@ -44,15 +53,7 @@ const check = () => {
 		}
 	}
 
-	for(i = 0; i < 9; i++){
-		if(boxes[i].innerHTML == "X" || boxes[i].innerHTML == "O"){
-			draww++;
-			if(draww == 9){
-				draw();
-
-			}
-		}
-	}
+	
 	
 }
 
